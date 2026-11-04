@@ -18,7 +18,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Please complete all fields with valid information." }, { status: 400 });
     }
 
-    const { SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, CONTACT_TO } = process.env;
+    const { SMTP_HOST, SMTP_CONNECT_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, CONTACT_TO } = process.env;
     if (!SMTP_HOST || !SMTP_PORT || !SMTP_USER || !SMTP_PASS || !CONTACT_TO) {
       return NextResponse.json(
         { error: "The enquiry service is being configured. Please try again shortly." },
@@ -27,10 +27,17 @@ export async function POST(request: NextRequest) {
     }
 
     const transporter = nodemailer.createTransport({
-      host: SMTP_HOST,
+      host: SMTP_CONNECT_HOST || SMTP_HOST,
       port: Number(SMTP_PORT),
       secure: Number(SMTP_PORT) === 465,
+      tls: {
+        servername: SMTP_HOST,
+        minVersion: "TLSv1.2",
+      },
       auth: { user: SMTP_USER, pass: SMTP_PASS },
+      connectionTimeout: 20000,
+      greetingTimeout: 15000,
+      socketTimeout: 30000,
     });
 
     await transporter.sendMail({
@@ -42,7 +49,18 @@ export async function POST(request: NextRequest) {
     });
 
     return NextResponse.json({ success: true });
-  } catch {
+  } catch (error) {
+    const smtpError = error instanceof Error
+      ? error as Error & { code?: string; command?: string; responseCode?: number }
+      : null;
+
+    console.error("Contact email delivery failed:", {
+      name: smtpError?.name,
+      code: smtpError?.code,
+      command: smtpError?.command,
+      responseCode: smtpError?.responseCode,
+    });
+
     return NextResponse.json({ error: "We could not send your enquiry. Please try again later." }, { status: 500 });
   }
 }
