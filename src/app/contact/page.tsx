@@ -16,6 +16,19 @@ export default function ContactPage() {
           <div className="contact-assurance">
             <span className="status-dot" /> Your contact details are handled privately.
           </div>
+          <a
+            className="contact-whatsapp"
+            href="https://wa.me/254702734775?text=Hello%20KEITIEM%20DIGITAL%20LABS%2C%20I%20would%20like%20to%20make%20an%20enquiry."
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Chat with KEITIEM DIGITAL LABS on WhatsApp"
+          >
+            <span className="contact-whatsapp-icon">↗</span>
+            <span>
+              <strong>Chat with us on WhatsApp</strong>
+              <small>+254 702 734 775</small>
+            </span>
+          </a>
         </div>
         <ContactForm />
       </section>

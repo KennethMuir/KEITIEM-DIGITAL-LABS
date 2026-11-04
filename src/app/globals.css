@@ -500,3 +500,45 @@ button { font: inherit; }
   }
 }
 
+/* M10D: WhatsApp contact option */
+.contact-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 13px;
+  width: fit-content;
+  margin-top: 24px;
+  padding: 13px 17px;
+  border: 1px solid rgba(25,198,160,.3);
+  border-radius: 9px;
+  background: rgba(25,198,160,.06);
+  color: #F6F8FC;
+  transition: background .2s, border-color .2s, transform .2s;
+}
+.contact-whatsapp:hover {
+  background: rgba(25,198,160,.12);
+  border-color: #19C6A0;
+  transform: translateY(-2px);
+}
+.contact-whatsapp-icon {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #19C6A0;
+  color: #10172A;
+  font-size: 21px;
+  font-weight: 700;
+}
+.contact-whatsapp strong,
+.contact-whatsapp small {
+  display: block;
+}
+.contact-whatsapp strong {
+  font-size: 12px;
+}
+.contact-whatsapp small {
+  margin-top: 4px;
+  color: #9DAAC1;
+  font-size: 11px;
+}
