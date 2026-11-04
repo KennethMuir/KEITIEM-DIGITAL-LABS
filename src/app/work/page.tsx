@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowUpRight, Monitor, ShoppingBag, Workflow } from "lucide-react";
 import InnerPage from "@/components/inner-page";
 
@@ -11,11 +12,41 @@ const projectTypes = [
 export default function WorkPage() {
   return (
     <InnerPage
-      eyebrow="SELECTED CAPABILITIES"
+      eyebrow="SELECTED WORK & CAPABILITIES"
       title={<>Good work starts with <span className="gradient-text">the right questions.</span></>}
-      description="We bring design and technology together to solve practical business challenges. Here are the kinds of projects we create."
+      description="We bring design and technology together to solve practical business challenges. Explore a featured project and the kinds of solutions we create."
     >
       <section className="inner-section section-shell">
+        <div className="featured-project">
+          <div className="featured-project-visual">
+            <Image
+              src="/images/velloria-westland-spa-preview.webp"
+              alt="Velloria Westland Spa official homepage"
+              fill
+              priority
+              sizes="(max-width: 700px) 100vw, 50vw"
+              style={{ objectFit: "cover", objectPosition: "top" }}
+            />
+          </div>
+
+          <div className="featured-project-content">
+            <span className="eyebrow">WEB DESIGN</span>
+            <h2>Velloria Westland Spa</h2>
+            <p>
+              A featured website project for a spa and wellness brand.
+              Explore the live website.
+            </p>
+            <a
+              href="https://velloriawestlandspa.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-link"
+            >
+              Visit Live Website <ArrowUpRight size={17} />
+            </a>
+          </div>
+        </div>
+
         <div className="work-grid">
           {projectTypes.map(({ icon: Icon, number, title, text, tag }) => (
             <article className="work-card" key={number}>
@@ -35,3 +66,5 @@ export default function WorkPage() {
     </InnerPage>
   );
 }
+
+
