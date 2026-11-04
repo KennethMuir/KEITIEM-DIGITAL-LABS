@@ -542,3 +542,28 @@ button { font: inherit; }
   color: #9DAAC1;
   font-size: 11px;
 }
+/* Official KEITIEM DIGITAL LABS logo */
+.brand-logo {
+  display: block;
+  width: 68px;
+  height: 68px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.footer-brand-logo {
+  width: 126px;
+  height: 126px;
+}
+
+@media (max-width: 760px) {
+  .brand-logo {
+    width: 62px;
+    height: 62px;
+  }
+
+  .footer-brand-logo {
+    width: 112px;
+    height: 112px;
+  }
+}

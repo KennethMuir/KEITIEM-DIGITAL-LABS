@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 
@@ -19,11 +20,14 @@ export default function SiteHeader() {
     <header className="site-header">
       <div className="nav-container">
         <Link href="/" className="brand" onClick={() => setMenuOpen(false)}>
-          <span className="brand-symbol">K<span>.</span></span>
-          <span className="brand-name">
-            KEITIEM
-            <small>DIGITAL LABS</small>
-          </span>
+          <Image
+            src="/images/keitiem-digital-labs-logo.webp"
+            alt="KEITIEM DIGITAL LABS"
+            width={72}
+            height={72}
+            priority
+            className="brand-logo"
+          />
         </Link>
 
         <nav className={`nav-links ${menuOpen ? "nav-open" : ""}`}>

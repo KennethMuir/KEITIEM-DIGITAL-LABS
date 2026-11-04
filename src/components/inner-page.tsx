@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { ArrowUpRight } from "lucide-react";
@@ -43,8 +44,13 @@ export default function InnerPage({
         <div className="section-shell">
           <div className="footer-main">
             <Link href="/" className="brand footer-brand">
-              <span className="brand-symbol">K<span>.</span></span>
-              <span className="brand-name">KEITIEM<small>DIGITAL LABS</small></span>
+              <Image
+                src="/images/keitiem-digital-labs-logo.webp"
+                alt="KEITIEM DIGITAL LABS"
+                width={132}
+                height={132}
+                className="brand-logo footer-brand-logo"
+              />
             </Link>
             <p>Digital experiences.<br />Smarter business.</p>
             <div className="footer-links">
